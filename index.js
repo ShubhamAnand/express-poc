@@ -3,9 +3,19 @@ var express = require('express'),
 
 var router = express.Router();
 
-router.route('/').get(function(req, res){
-  res.json({"name": "Kunal Mazumdar"});
+// A middleware to intercept and perform before every HTTP request
+router.use(function(req, res, next){
+  console.log('New request made...');
+  next();
 });
+
+router
+  .route('/')
+  .get(function(req, res){
+    res.json({"name": "Kunal Mazumdar"});
+});
+
+
 
 app.use('/', router);
 app.listen(5555);
