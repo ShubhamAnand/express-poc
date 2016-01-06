@@ -10,6 +10,7 @@
     "express": "latest",
     "body-parser": "latest",
     "mongoose": "latest",
-    "nodemon": "latest"
+    "nodemon": "latest",
+    "ejs": "latest"
   }
 }

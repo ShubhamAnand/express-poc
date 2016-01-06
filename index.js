@@ -1,22 +1,14 @@
 var express = require('express'),
-    app = express();
+    app = express(),
+    mainRoutes = require('./Routes/mainRoute');
 
-var router = express.Router();
+//Setting up the view engine for the application
+app.set('view engine', 'ejs');
 
-// A middleware to intercept and perform before every HTTP request
-router.use(function(req, res, next){
-  console.log('New request made...');
-  next();
-});
+//Route #1
+app.use('/', mainRoutes);
 
-router
-  .route('/')
-  .get(function(req, res){
-    res.json({"name": "Kunal Mazumdar"});
-});
-
-
-
-app.use('/', router);
+//Setting up the application port
 app.listen(5555);
-console.log('Application is listening....')
+
+console.log('Application is listening....');
