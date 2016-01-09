@@ -7,10 +7,10 @@
   "repository": "https://github.com/kunal-mazumdar/express-poc.git",
   "license": "ISC",
   "dependencies": {
-    "express": "latest",
     "body-parser": "latest",
-    "mongoose": "latest",
-    "nodemon": "latest",
-    "ejs": "latest"
+    "ejs": "latest",
+    "express": "latest",
+    "mongoose": "^4.3.4",
+    "nodemon": "latest"
   }
 }
