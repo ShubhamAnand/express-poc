@@ -1,12 +1,26 @@
 var express = require('express'),
-    app = express();
+    app = express(),
+    mainRoutes = require('./routes/mainRoute'),
+    accessRoutes = require('./routes/accessRoutes'),
+    mongoose = require('mongoose'),
+    bodyParser = require('body-parser');
 
-var router = express.Router();
+//Setting up the view engine for the application
+app.set('view engine', 'ejs');
 
-router.route('/').get(function(req, res){
-  res.json({"name": "Kunal Mazumdar"});
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+//Route #1
+app.use('/social/api', mainRoutes);
+app.use('/', accessRoutes);
+
+mongoose.connect('mongodb://localhost:27017/test');
+mongoose.connection.on('connected', function () {
+  console.log('Mongoose test connection open...');
 });
 
-app.use('/', router);
-app.listen(5555);
-console.log('Application is listening....')
+//Setting up the application port
+app.listen(process.env.PORT || 5555);
+
+console.log('Application is listening....');
