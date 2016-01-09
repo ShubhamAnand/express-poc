@@ -15,10 +15,10 @@ app.use(bodyParser.json());
 app.use('/social/api', mainRoutes);
 app.use('/', accessRoutes);
 
-mongoose.connect('mongodb://localhost:27017/test');
+/*mongoose.connect('mongodb://localhost:27017/test');
 mongoose.connection.on('connected', function () {
   console.log('Mongoose test connection open...');
-});
+});*/
 
 //Setting up the application port
 app.listen(process.env.PORT || 5555);
